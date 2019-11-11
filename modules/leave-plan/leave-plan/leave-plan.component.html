@@ -1,0 +1,129 @@
+<div class="container">
+  <div class="headline">
+    <h1>WorkOrganization</h1>
+  </div>
+
+  
+    <input class="aaa" type="checkbox"  id="payt4" name="typeOfLeave" [(ngModel)]="typeOfLeave" checked/><br/>
+    <label for="payt4"></label>
+
+
+    <div class="row">
+      <div class="col-4"></div>
+        <div class="col-4">
+          <div  [class]="typeOfLeave ? 'blockClass' : 'noneClass'">
+            <form>
+              <div class="form-group">
+                <label>Name:</label><br>
+                <app-text-input name='firstName' [(ngModel)]="nameLeave" ></app-text-input><br>
+              </div>
+              <div class="form-group">
+                <label for="surname">Surname:</label><br>
+                <app-text-input name='lastName' [(ngModel)]="surnameLeave"></app-text-input>
+              </div>
+            </form>
+              <day-off-app type="DayOff" name ='dateMasLeave' [(ngModel)]="dateMasLeave"></day-off-app>
+              <button type="submit" class="btn btn-primary" (click)="addForms()">Add</button>
+          </div>
+        </div>
+      <div class="col-4"></div>
+    </div>
+    
+    <div class="row">
+      <div class="col-4"></div>
+        <div class="col-4">
+          <div  [class]="typeOfLeave ? 'noneClass' : 'blockClass'">
+            <form>
+              <div class="form-group">
+                <label for="name">Name:</label><br>
+                <app-text-input name='firstName' [(ngModel)]="nameLeave" ></app-text-input><br>
+              </div>
+              <div class="form-group">
+                <label for="surname">Surname:</label><br>
+                <app-text-input name='lastName' [(ngModel)]="surnameLeave"></app-text-input>
+              </div>
+            </form>
+              <ttt type="Vacation" name='dateMasLeave' [(ngModel)]="dateMasLeave"></ttt>
+              <button type="submit" class="btn btn-primary" (click)="addForms()">Add</button>
+          </div>
+        </div>
+      <div class="col-4"></div>
+    </div>
+</div>    
+    
+
+    <div class="tables">
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <div class="md-form">
+            <input type="text" [(ngModel)]="searchText" class="form-control" id="search" placeholder="Type to search" mdbInput>
+          </div>
+        </div>
+      </div>
+      <table mdbTable class="table table-white">
+        <thead>
+          <tr>
+            <th scope="col" [mdbTableSort]="humanList" sortBy="index">Index</th>
+            <th scope="col" [mdbTableSort]="humanList" sortBy="name">Name</th>
+            <th scope="col" [mdbTableSort]="humanList" sortBy="surname">Surname</th>
+            <th scope="col" [mdbTableSort]="humanList" sortBy="masVacation/masDayOff">DayOff/Vacation</th>
+            <th scope="col" [mdbTableSort]="humanList" sortBy="dateSpend">SpendDayOffs/SpendVacation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i = index; let human of humanList | paginate: { itemsPerPage: count, currentPage: p}">
+            <td scope="row">{{i+(p-1)*count+ 1}}</td>
+            <td>{{human.name}}</td>
+            <td>{{human.surname}}</td>
+            <td>Your Vacation: {{viewCorrectFormat(human.masVacation)}}.<br>  
+                Your DayOffs: {{viewCorrectFormat(human.masDayOff)}}.</td>
+            <td>{{human.masVacation.length}}/{{22}}.<br> 
+                {{(human.masDayOff.length)}}/{{10}}.</td>
+            <td><button class="btn1" (click) ="buttonRemoveValueTable(i)">Remove</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-right">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+      
+   
+
+
+
+<!-- <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div> -->
+    
+<!-- <div class="button">
+        <button class="btn" (click)="addValue()">Add</button>
+        <button class="btn1" (click)="removeValue()">RemoveLast</button>
+        <button class="btn2" (click)="removeInputValue()">RemoveInput</button>
+      </div>
+          -->
+        
+          <!-- <div class="container1">
+          <div class="DataTable">
+            <h1>DataTable2</h1>
+          </div>
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>index2</th>
+                <th>name2</th>
+                <th>surname2</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let human of humanList2; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{human.name}}</td>
+                <td>{{human.surname}}</td>
+                <button class="btn3" (click) = "removeHuman(i)" >remove</button>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div> -->

@@ -1,0 +1,14 @@
+label p {
+    margin: 0;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+input {
+    margin: 0;
+    position: relative;
+    right: -30px;
+    top: -15px;
+}
+input owl-date-time {
+    border-radius: 5px;
+}

@@ -1,0 +1,6 @@
+<label >
+  <p>Vacation:</p><br>
+  <input [(ngModel)]="value" (ngModelChange)="onChange($event)" #name="ngModel" [owlDateTimeTrigger]="dt7" [owlDateTime]="dt7"
+         [selectMode]="'range'" (ngModelChange)="onChange($event)" style="width: 320px; border-radius: 5px; border: solid 1px; height: 25px; font-family: 'AppetiteNew';font-size: 16px; ">
+  <owl-date-time #dt7 ></owl-date-time>
+</label>

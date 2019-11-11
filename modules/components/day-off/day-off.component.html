@@ -1,0 +1,6 @@
+<label>
+  <p>DayOff:</p><br>
+  <input [(ngModel)]="value" (ngModelChange)="onChange($event)" #name="ngModel" [owlDateTimeTrigger]="dt" [owlDateTime]="dt" 
+    (ngModelChange)="onChange($event)" style="width: 320px; border-radius: 5px; border: solid 1px; height: 25px; font-family: 'AppetiteNew';font-size: 16px; ">
+  <owl-date-time #dt></owl-date-time>
+</label>
